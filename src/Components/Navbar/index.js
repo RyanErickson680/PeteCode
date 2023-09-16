@@ -15,11 +15,11 @@ return (
 		<Bars />
 
 		<NavMenu>
-		<NavLink to='/page1' activeStyle>
-			About
+		<NavLink to='/board' activeStyle>
+			Leaderboard
 		</NavLink>
-		<NavLink to='/page2' activeStyle>
-			Events
+		<NavLink to='/competitions' activeStyle>
+			Competitions
 		</NavLink>
 		{/* Second Nav */}
 		{/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}

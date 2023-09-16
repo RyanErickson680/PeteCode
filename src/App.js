@@ -6,6 +6,8 @@ import Home from './Pages'
 import Page1 from './Pages/page1';
 import Page2 from './Pages/page2';
 import Page3 from './Pages/page3';
+import Board from './Pages/board';
+import Competitions from './Pages/competitions';
 
 function App() {
     return (
@@ -13,9 +15,9 @@ function App() {
             <Navbar />
             <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path='/page1' element={<Page1 />} />
-                <Route path='/page2' element={<Page2 />} />
-                <Route path='/page3' element={<Page2 />} />
+                <Route path='/board' element={<Board />} />
+                <Route path='/competitions' element={<Competitions />} />
+                <Route path='/page3' element={<Page3 />} />
             </Routes>
         </Router>
         
