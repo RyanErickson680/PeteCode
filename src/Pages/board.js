@@ -1,25 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Profiles from './profiles';
 import { Leaderboard } from './database';
 
 export default function Board() {
-
-    const [period, setPeriod] = useState(0);
-
-  const handleClick = (e) => {
-     
-    setPeriod(e.target.dataset.id)
-  }
 
   return (
     <div className="board">
         <h1 className='leaderboard'>Leaderboard</h1>
 
         <div className="duration">
-            <button onClick={handleClick} data-id='0'>All-Time</button>
+            All-Time
         </div>
 
-        <Profiles Leaderboard={between(Leaderboard, period)}></Profiles>
+        <Profiles Leaderboard={between(Leaderboard, 0)}></Profiles>
 
     </div>
   )
@@ -33,7 +26,7 @@ function between(data, between){
     previous.setDate(previous.getDate() - (between + 1));
 
     let filter = data.filter(val => {
-        let userDate = new Date(val.dt);
+        let userDate = today;
         if (between == 0) return val;
         return previous <= userDate && today >= userDate;
     })
