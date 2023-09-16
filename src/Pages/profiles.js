@@ -10,7 +10,7 @@ export default function Profiles({ Ordered }) {
             <h3 className="text-dark">{user.name}</h3>
           </div>
           <div className="item">
-            <span>{user.solved}</span>
+            <span className='item1'>{user.solved}</span>
           </div>
         </div>
       ))}
