@@ -5,7 +5,7 @@ import React from 'react';
 import Navbar from './Components/Navbar';
 import Home from './Pages/homepage'
 import Board from './Pages/board';
-import Competitions from './Pages/competitions';
+import Competitions from './Pages/competitions/competitions';
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Reset from "./auth/Reset";
