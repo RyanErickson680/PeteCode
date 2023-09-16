@@ -27,6 +27,7 @@ function App() {
           <Route path='/board' element={<Board />} />
           <Route path='/competitions' element={<Competitions />} />
           <Route path='/randomProblems' element={<RandomProblemsList />} />
+          <Route path='/recommendations' element={<Recommendations/>} />
         </Routes>
       </Router>
     </div>
