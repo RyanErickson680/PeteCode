@@ -37,7 +37,7 @@ function Register() {
           className="register__textBox"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Full Name"
+          placeholder="LeetCode Username"
         />
         <input
           type="text"
@@ -57,7 +57,7 @@ function Register() {
           Register
         </button>
         <div>
-          Already have an account? <Link to="/">Login</Link> now.
+          Already have an account? <Link to="/login">Login</Link> now.
         </div>
       </div>
       <div className="welcomeSignIn">

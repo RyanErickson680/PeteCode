@@ -3,6 +3,7 @@ import DisplayComponent from './DisplayComponent';
 import BtnComponent from './BtnComponent';
 import './competitions.css';
 import HackTimer from "./HackTimer";
+import { LeetCode, Credential } from "leetcode-query";
 
 function Competitions() {
   const [time, setTime] = useState({ms:0, s:0, m:0, h:0});
@@ -50,8 +51,8 @@ function Competitions() {
 
   const resume = () => start();
 
-
   return (
+    <body class="competition">
     <div className="main-section">
      <div className="clock-holder">
           <div className="stopwatch">
@@ -60,6 +61,7 @@ function Competitions() {
           </div>
      </div>
     </div>
+    </body>
   );
 }
 
