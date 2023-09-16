@@ -12,9 +12,7 @@ import { diff } from 'semver';
  */
 function RandomProblemsList(difficulty, category, numQuestions) {
   const [problems, setProblems] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('Array'); // Default category
   var randomProblems;
-  const categories = ['Array', 'String', 'Tree', 'Dynamic Programming', 'Geometry' /* Add more categories here */];
 
   // Function to filter problems by category
   const filterByCategory = (data, category) => {
