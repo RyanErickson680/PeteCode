@@ -7,12 +7,10 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^10.4.0",
+    "leetcode-query": "^0.2.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-<<<<<<< HEAD
-=======
     "react-firebase-hooks": "^5.1.1",
->>>>>>> 9ef39b177fe21fe05abee9867b97bf11af51276c
     "react-router-dom": "^6.16.0",
     "react-scripts": "5.0.1",
     "styled-components": "^6.0.8",
