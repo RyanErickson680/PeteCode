@@ -1,9 +1,17 @@
-import "./App.css";
+import logo from './logo.svg';
+import './App.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React from 'react';
+import Navbar from './Components/Navbar';
+import Home from './Pages/Homepage'
+import Page3 from './Pages/page3';
+import Board from './Pages/board';
+import Competitions from './Pages/competitions';
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Reset from "./auth/Reset";
 import Dashboard from "./auth/Dashboard";
+
 function App() {
   return (
     <div className="app">
@@ -13,6 +21,10 @@ function App() {
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/reset" element={<Reset />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/board' element={<Board />} />
+          <Route path='/competitions' element={<Competitions />} />
+          <Route path='/page3' element={<Page3 />} />
         </Routes>
       </Router>
     </div>
