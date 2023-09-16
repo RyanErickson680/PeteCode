@@ -1,59 +1,59 @@
-import React, { useState, useEffect } from "react";
-import "./stopwatch.css";
-const Stopwatch = () => {
-  // state to store time
-  const [time, setTime] = useState(0);
 
-  // state to check stopwatch running or not
-  const [isRunning, setIsRunning] = useState(false);
+const timeDisplay = document.querySelector("#timeDisplay");
+const startBtn = document.querySelector("#startBtn");
+const pauseBtn = document.querySelector("#pauseBtn");
+const resetBtn = document.querySelector("#resetBtn");
 
-  useEffect(() => {
-    let intervalId;
-    if (isRunning) {
-      // setting time from 0 to 1 every 10 milisecond using javascript setInterval method
-      intervalId = setInterval(() => setTime(time + 1), 10);
+let startTime = 0;
+let elapsedTime = 0;
+let currentTime = 0;
+let paused = true;
+let intervalId;
+let hrs = 0;
+let mins = 0;
+let secs = 0;
+
+startBtn.addEventListener("click", () => {
+    if(paused){
+        paused = false;
+        startTime = Date.now() - elapsedTime;
+        intervalId = setInterval(updateTime, 1000);
     }
-    return () => clearInterval(intervalId);
-  }, [isRunning, time]);
+});
+pauseBtn.addEventListener("click", () => {
+    if(!paused){
+        paused = true;
+        elapsedTime = Date.now() - startTime;
+        clearInterval(intervalId);
+    }
+});
+resetBtn.addEventListener("click", () => {
+    paused = true;
+    clearInterval(intervalId);
+    startTime = 0;
+    elapsedTime = 0;
+    currentTime = 0;
+    hrs = 0;
+    mins = 0;
+    secs = 0;
+    timeDisplay.textContent = "00:00:00";
+});
 
-  // Hours calculation
-  const hours = Math.floor(time / 360000);
+function updateTime(){
+    elapsedTime = Date.now() - startTime;
 
-  // Minutes calculation
-  const minutes = Math.floor((time % 360000) / 6000);
+    secs = Math.floor((elapsedTime / 1000) % 60);
+    mins = Math.floor((elapsedTime / (1000 * 60)) % 60);
+    hrs = Math.floor((elapsedTime / (1000 * 60 * 60)) % 60);
 
-  // Seconds calculation
-  const seconds = Math.floor((time % 6000) / 100);
+    secs = pad(secs);
+    mins = pad(mins);
+    hrs = pad(hrs);
 
-  // Milliseconds calculation
-  const milliseconds = time % 100;
+    timeDisplay.textContent = `${hrs}:${mins}:${secs}`;
 
-  // Method to start and stop timer
-  const startAndStop = () => {
-    setIsRunning(!isRunning);
-  };
+    function pad(unit){
+        return (("0") + unit).length > 2 ? unit : "0" + unit;
+    }
+}
 
-  // Method to reset timer back to 0
-  const reset = () => {
-    setTime(0);
-  };
-  return (
-    <div className="stopwatch-container">
-      <p className="stopwatch-time">
-        {hours}:{minutes.toString().padStart(2, "0")}:
-        {seconds.toString().padStart(2, "0")}:
-        {milliseconds.toString().padStart(2, "0")}
-      </p>
-      <div className="stopwatch-buttons">
-        <button className="stopwatch-button" onClick={startAndStop}>
-          {isRunning ? "Stop" : "Start"}
-        </button>
-        <button className="stopwatch-button" onClick={reset}>
-          Reset
-        </button>
-      </div>
-    </div>
-  );
-};
-
-export default Stopwatch;

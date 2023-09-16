@@ -5,12 +5,13 @@ import React from 'react';
 import Navbar from './Components/Navbar';
 import Home from './Pages/homepage'
 import Board from './Pages/board';
-import Competitions from './Pages/competitions';
+import Competitions from './Pages/competitions/competitions';
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Reset from "./auth/Reset";
 import Dashboard from "./auth/Dashboard";
-import Recommendations from './Pages/recommendations';
+import RandomProblemsList from './Pages/randomProblem';
+\import Recommendations from './Pages/recommendations';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/board' element={<Board />} />
           <Route path='/competitions' element={<Competitions />} />
-          <Route exact path="/recommendations" element={<Recommendations />} />
+          <Route path='/randomProblems' element={<RandomProblemsList />} />
         </Routes>
       </Router>
     </div>

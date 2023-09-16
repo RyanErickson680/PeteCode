@@ -27,6 +27,9 @@ return (
 		<NavLink to='/competitions' activeStyle>
 			Competitions
 		</NavLink>
+		<NavLink to='/randomProblems'>
+			Random Problems
+		</NavLink>
 		<NavLink to='/recommendations' activeStyle>
 			Recommendations
 		</NavLink>

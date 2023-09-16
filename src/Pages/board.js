@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Profiles from './profiles';
 import { Leaderboard } from './database';
 
 export default function Board() {
-
+    const [userData, setUserData] = useState([]);
+  
+    useEffect(() => {
+      // Fetch data for each user in the leaderboard
+      Promise.all(
+        Leaderboard.map(async (value) => {
+          const data = await GetData(value.name);
+          return {
+            name: value.name,
+            solved: data,
+          };
+        })
+      ).then((userArray) => {
+        setUserData(userArray);
+      });
+    }, [Leaderboard]);
   return (
     <div className="board">
         <h1 className='leaderboard'>Leaderboard</h1>
@@ -12,7 +27,7 @@ export default function Board() {
             All-Time
         </div>
 
-        <Profiles Leaderboard={between(Leaderboard, 0)}></Profiles>
+        <Profiles Ordered={between(userData)}></Profiles>
 
     </div>
   )
@@ -20,24 +35,90 @@ export default function Board() {
 
 
 
-function between(data, between){
-    const today = new Date();
-    const previous = new Date(today);
-    previous.setDate(previous.getDate() - (between + 1));
-
-    let filter = data.filter(val => {
-        let userDate = today;
-        if (between == 0) return val;
-        return previous <= userDate && today >= userDate;
-    })
-
+function between(data){
     // sort with asending order
-    return filter.sort((a, b) => {
-        if ( a.score === b.score){
-            return b.score - a.score;
+    return data.sort((a, b) => {
+        if ( a.solved === b.solved){
+            return b.solved - a.solved;
         } else{
-            return b.score - a.score;
+            return b.solved - a.solved;
         }
     })
 
 }
+async function GetData(currname) {
+    
+    // Define the endpoint and headers
+    const url = "/graphql";
+    const headers = {
+      "Content-Type": "application/json",
+      "User-Agent": "Mozilla/5.0",
+    };
+  
+    // Define the query and variables
+    const username = currname;
+    const data = {
+      query: `
+        query userProblemsSolved($username: String!) {
+          allQuestionsCount {
+            difficulty
+            count
+          }
+          matchedUser(username: $username) {
+            problemsSolvedBeatsStats {
+              difficulty
+              percentage
+            }
+            submitStatsGlobal {
+              acSubmissionNum {
+                difficulty
+                count
+              }
+            }
+          }
+        }
+      `,
+      variables: {
+        username: username,
+      },
+    };
+  
+    try {
+      // Make the POST request
+      const response = await fetch(url, {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(data),
+      });
+  
+      if (response.ok) {
+        const responseData = await response.json();
+  
+        // Extract necessary details
+        const totalSolved = responseData.data.matchedUser.submitStatsGlobal.acSubmissionNum.find(
+          (item) => item.difficulty === "All"
+        ).count;
+        const easySolved = responseData.data.matchedUser.submitStatsGlobal.acSubmissionNum.find(
+          (item) => item.difficulty === "Easy"
+        ).count;
+        const mediumSolved = responseData.data.matchedUser.submitStatsGlobal.acSubmissionNum.find(
+          (item) => item.difficulty === "Medium"
+        ).count;
+        const hardSolved = responseData.data.matchedUser.submitStatsGlobal.acSubmissionNum.find(
+          (item) => item.difficulty === "Hard"
+        ).count;
+  
+        // Format and print output
+  
+        return (totalSolved);
+      } else {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  
+  // Call the function to make the GraphQL request
+  GetData();
+  

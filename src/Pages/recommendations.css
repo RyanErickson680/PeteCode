@@ -1,8 +1,124 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
-* {
-  margin: 0;
-  padding: 0;
-}
-p {
-  font-family: 'Open Sans', sans-serif;
-}
+/* recommendations.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    width: 100vw;
+  }
+  
+  .recommendations-container {
+    width: 95%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 0 auto 0 auto;
+  }
+  
+  .problem-stats {
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .problem-count {
+    font-size: 24px;
+  }
+  
+  .difficulty-count {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .select-difficulty,
+  .select-topic {
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
+  }
+  
+  .section-header {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .radio-buttons,
+  .topic-dropdown {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 10px;
+  }
+  
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+  
+  select {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .recommendation-list {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .recommendation {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    .recommendations-container {
+      padding: 10px;
+    }
+  
+    .problem-stats,
+    .select-difficulty,
+    .select-topic {
+      padding: 10px;
+    }
+  
+    .section-header {
+      font-size: 16px;
+    }
+  
+    input[type="radio"] {
+      margin-right: 2px;
+    }
+  
+    button {
+      padding: 5px 10px;
+    }
+  }
+  
