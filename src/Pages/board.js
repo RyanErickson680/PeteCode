@@ -76,6 +76,9 @@ async function GetData(currname) {
               }
             }
           }
+          recentSubmissionList(username: $username) {
+            title
+          }
         }
       `,
       variables: {
@@ -107,9 +110,10 @@ async function GetData(currname) {
         const hardSolved = responseData.data.matchedUser.submitStatsGlobal.acSubmissionNum.find(
           (item) => item.difficulty === "Hard"
         ).count;
-  
+        const recentSubmissionList = responseData.data.recentSubmissionList;
+        const name_solved = recentSubmissionList.map(item => item.title);
+
         // Format and print output
-  
         return (totalSolved);
       } else {
         throw new Error(`Error ${response.status}: ${response.statusText}`);
