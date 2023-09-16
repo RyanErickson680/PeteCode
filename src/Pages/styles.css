@@ -19,7 +19,7 @@
 
 .board {
     text-align: center;
-    color: white;
+    color: black;
 }
 
 .board .leaderboard{
@@ -79,5 +79,5 @@
 }
 
 .text-dark{
-    color: var(--color-light);
+    color: var(--color-dark);
 }
