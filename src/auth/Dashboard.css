@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
 }
-p {
+p.dash {
   font-family: 'Open Sans', sans-serif;
   font-size: 30px;
   margin-bottom: 5%;

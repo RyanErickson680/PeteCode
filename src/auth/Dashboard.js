@@ -26,10 +26,10 @@ function Dashboard() {
   }, [user, loading]);
   return (
     <div className="dashboard">
-       <p className="dashboard__container">
+       <p className="dashboard__container" class="dash">
         Logged in as
-         <p>{name}</p>
-         <p>{user?.email}</p>
+         <p class="dash">{name}</p>
+         <p class="dash">{user?.email}</p>
          <button className="dashboard__btn" onClick={logout}>
           Logout
          </button>

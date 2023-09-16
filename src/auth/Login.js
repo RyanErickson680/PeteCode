@@ -22,13 +22,13 @@ function Login() {
       <div className="login__container">
         <div className="pete">
           <img src={pete} />
-          <p>PeteCode</p>
+          <p class="dash">PeteCode</p>
         </div>
         <div className="signInContainer">
-          <p id="signIn">
+          <p id="signIn" class="dash">
             Sign In
           </p>
-          <p id="signInMessage">
+          <p id="signInMessage" class="dash">
             Please sign in to your account
           </p>
         </div>
@@ -62,12 +62,12 @@ function Login() {
         </div>
       </div>
       <div className="welcomeSignIn">
-        <p id="getStarted">Get started with <br></br>PeteCode</p>
+        <p id="getStarted" class="dash">Get started with <br></br>PeteCode</p>
         <img src={stats}></img>
-        <p id="components">Components</p>
+        <p id="components" class="dash">Components</p>
         <ul>
           <li>
-            Lederboard
+            Leaderboard
           </li>
           <li>
             Competitions
