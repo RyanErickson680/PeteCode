@@ -21,19 +21,19 @@ function Dashboard() {
   };
   useEffect(() => {
     if (loading) return;
-    if (!user) return navigate("/");
+    if (!user) return navigate("/login");
     fetchUserName();
   }, [user, loading]);
   return (
     <div className="dashboard">
-       <div className="dashboard__container">
+       <p className="dashboard__container">
         Logged in as
-         <div>{name}</div>
-         <div>{user?.email}</div>
+         <p>{name}</p>
+         <p>{user?.email}</p>
          <button className="dashboard__btn" onClick={logout}>
           Logout
          </button>
-       </div>
+       </p>
      </div>
   );
 }

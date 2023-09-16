@@ -10,6 +10,7 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Reset from "./auth/Reset";
 import Dashboard from "./auth/Dashboard";
+import Recommendations from './Pages/recommendations';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/board' element={<Board />} />
           <Route path='/competitions' element={<Competitions />} />
+          <Route exact path="/recommendations" element={<Recommendations />} />
         </Routes>
       </Router>
     </div>

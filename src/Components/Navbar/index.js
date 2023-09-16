@@ -21,6 +21,9 @@ return (
 		<NavLink to='/competitions' activeStyle>
 			Competitions
 		</NavLink>
+		<NavLink to='/recommendations' activeStyle>
+			Recommendations
+		</NavLink>
 		{/* Second Nav */}
 		{/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
 		</NavMenu>
