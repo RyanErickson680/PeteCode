@@ -7,6 +7,9 @@ import axios from 'axios';
  * @returns {Promise<Array>}
  */
 async function RandomProblemsList(difficulty, category, numQuestions) {
+
+    const url = 'https://leetcode.com/problems/';
+
   // Function to filter problems by category
   const filterByCategory = (data, category) => {
     return data.filter(problem => problem.stat.question__title.includes(category));
@@ -16,7 +19,7 @@ async function RandomProblemsList(difficulty, category, numQuestions) {
     if (difficulty === -1) {
       return data;
     }
-    return data.filter(problem => problem.difficulty.level === difficulty.toString());
+    return data.filter(problem => problem.difficulty.level === difficulty);
   };
 
   // Function to get random problems
@@ -31,7 +34,9 @@ async function RandomProblemsList(difficulty, category, numQuestions) {
     const categoryProblems = filterByCategory(data, category);
     const difficultyProblems = filterByDifficulty(categoryProblems, difficulty);
     const randomProblems = getRandomProblems(difficultyProblems, numQuestions);
-    return randomProblems;
+    console.log(randomProblems[0].stat.question__title_slug);
+    
+    return url + randomProblems[0].stat.question__title_slug;
   } catch (error) {
     console.error('Error fetching problems:', error);
     throw error; // Propagate the error
