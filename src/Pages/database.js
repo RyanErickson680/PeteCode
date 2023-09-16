@@ -7,5 +7,8 @@ export const Leaderboard = [
     },
     {
         name:"RyanErickson",
+    },
+    {
+        name:"kestan"
     }
 ]

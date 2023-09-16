@@ -79,5 +79,10 @@
 }
 
 .text-dark{
-    color: var(--color-dark);
+    color: black;
+    margin-left: 50px;
+}
+
+.item1{
+    margin-right: 50px;
 }
