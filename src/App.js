@@ -11,7 +11,7 @@ import Register from "./auth/Register";
 import Reset from "./auth/Reset";
 import Dashboard from "./auth/Dashboard";
 import RandomProblemsList from './Pages/randomProblem';
-\import Recommendations from './Pages/recommendations';
+import Recommendations from './Pages/recommendations';
 
 function App() {
   return (
