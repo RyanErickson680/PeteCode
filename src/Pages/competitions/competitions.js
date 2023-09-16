@@ -52,6 +52,7 @@ function Competitions() {
 
 
   return (
+    <body class="competition">
     <div className="main-section">
      <div className="clock-holder">
           <div className="stopwatch">
@@ -60,6 +61,7 @@ function Competitions() {
           </div>
      </div>
     </div>
+    </body>
   );
 }
 
