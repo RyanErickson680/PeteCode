@@ -1,17 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CategoryDropdown from './categoryDropdown';
+import { diff } from 'semver';
 
-function RandomProblemsList() {
+/**
+ * 
+ * @param {int} difficulty integer value from 1 to 3
+ * @param {String} category 
+ * @param {int} numQuestions 
+ * @returns {String[]}
+ */
+function RandomProblemsList(difficulty, category, numQuestions) {
   const [problems, setProblems] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('Array'); // Default category
-
+  var randomProblems;
   const categories = ['Array', 'String', 'Tree', 'Dynamic Programming', 'Geometry' /* Add more categories here */];
 
   // Function to filter problems by category
   const filterByCategory = (data, category) => {
     return data.filter(problem => problem.stat.question__title.includes(category));
   };
+
+  const filterByDifficulty = (data, difficulty) => {
+    return data.filter(problem => problem.difficulty.level == difficulty.toLowerCase())
+  }
 
   // Function to get random problems
   const getRandomProblems = (data, count) => {
@@ -23,8 +35,9 @@ function RandomProblemsList() {
     try {
       const response = await axios.get('https://leetcode.com/api/problems/algorithms/');
       const data = response.data.stat_status_pairs;
-      const categoryProblems = filterByCategory(data, selectedCategory);
-      const randomProblems = getRandomProblems(categoryProblems, 5); // Get 5 random problems
+      const categoryProblems = filterByCategory(data, category);
+      const difficultyProblems = filterByDifficulty(categoryProblems, difficulty);
+      randomProblems = getRandomProblems(categoryProblems, numQuestions); 
       setProblems(randomProblems);
     } catch (error) {
       console.error('Error fetching problems:', error);
@@ -40,23 +53,7 @@ function RandomProblemsList() {
   };
 
   return (
-    <div>
-      <h2>Random {selectedCategory} Problems</h2>
-      <CategoryDropdown
-        categories={categories}
-        selectedCategory={selectedCategory}
-        onChange={handleCategoryChange}
-      />
-      <ul>
-        {problems.map((problem, index) => (
-          <li key={index}>
-            <a href={`https://leetcode.com/problems/${problem.stat.question__title_slug}`} target="_blank" rel="noopener noreferrer">
-              {problem.stat.question__title}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+    randomProblems
   );
 }
 
