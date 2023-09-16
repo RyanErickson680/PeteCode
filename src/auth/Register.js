@@ -6,6 +6,9 @@ import {
   registerWithEmailAndPassword,
 } from "./firebase";
 import "./Register.css";
+import "./Login.css";
+import pete from "../img/pete.jpeg"
+import stats from "../img/stats.png"
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,14 +19,19 @@ function Register() {
     if (!name) alert("Please enter name");
     registerWithEmailAndPassword(name, email, password);
   };
-  
+
+
   useEffect(() => {
     if (loading) return;
     if (user) navigate("/dashboard");
   }, [user, loading]);
   return (
-    <div className="register">
-      <div className="register__container">
+    <div className="login">
+      <div className="login__container">
+        <div className="pete">
+          <img src={pete} />
+          <p>PeteCode</p>
+        </div>
         <input
           type="text"
           className="register__textBox"
@@ -51,6 +59,22 @@ function Register() {
         <div>
           Already have an account? <Link to="/">Login</Link> now.
         </div>
+      </div>
+      <div className="welcomeSignIn">
+        <p id="getStarted">Get started with <br></br>PeteCode</p>
+        <img src={stats}></img>
+        <p id="components">Components</p>
+        <ul>
+          <li>
+            Lederboard
+          </li>
+          <li>
+            Competitions
+          </li>
+          <li>
+            Personalization
+          </li>
+        </ul>
       </div>
     </div>
   );
