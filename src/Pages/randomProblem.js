@@ -19,7 +19,9 @@ function RandomProblemsList(difficulty, category, numQuestions) {
     return data.filter(problem => problem.stat.question__title.includes(category));
   };
 
+
   const filterByDifficulty = (data, difficulty) => {
+    if(data == -1)
     return data.filter(problem => problem.difficulty.level == difficulty.toLowerCase())
   }
 
@@ -44,11 +46,11 @@ function RandomProblemsList(difficulty, category, numQuestions) {
 
   useEffect(() => {
     fetchRandomProblems();
-  }, [selectedCategory]);
+  }, [category]);
 
-  const handleCategoryChange = (event) => {
-    setSelectedCategory(event.target.value);
-  };
+ // const handleCategoryChange = (event) => {
+   // setSelectedCategory(event.target.value);
+  //};
 
   return (
     randomProblems
