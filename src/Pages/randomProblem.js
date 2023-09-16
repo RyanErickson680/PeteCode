@@ -21,7 +21,9 @@ function RandomProblemsList(difficulty, category, numQuestions) {
 
 
   const filterByDifficulty = (data, difficulty) => {
-    if(data == -1)
+    if(data == -1) {
+        return data;
+    }
     return data.filter(problem => problem.difficulty.level == difficulty.toLowerCase())
   }
 
