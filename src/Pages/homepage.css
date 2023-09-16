@@ -11,6 +11,13 @@ body {
     background-attachment: fixed;
 }
 
+.bottom {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 3px;
+    font-size: 50%;
+}
 
 .title {
     align-items: center;

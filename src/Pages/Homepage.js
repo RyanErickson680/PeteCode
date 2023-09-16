@@ -13,6 +13,9 @@ const Home = () => {
             <div class='container'>
                 <p class='subtitle'>Purdue Leetcode Network</p>
             </div>
+            <div class='bottom'>
+            <a href="https://www.freepik.com/free-vector/design-modern-white-background-luxury-gold_31788488.htm#page=8&query=website%20background&position=9&from_view=search&track=ais">Image by logturnal</a> on Freepik
+            </div>
         </div>
 
     );
