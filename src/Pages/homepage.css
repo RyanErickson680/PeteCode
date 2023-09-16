@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'Lo-Res';
+    src: local('Lo-Res 9 Plus OT Wide Bold'), local('Lo-Res-9-Plus-OT-Wide-Bold'),
+        url('../fonts/LoRes9PlusOTWide-Bold.woff') format('woff');
+    font-style: normal;
+  }
+
+body {
+    background-image: url('../img/7.jpg');
+    background-size: 100%;
+    background-attachment: fixed;
+}
+
+
+.title {
+    align-items: center;
+    color:black;
+
+    font-family: "Lo-Res", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    letter-spacing: -1.75vw;
+    font-size: 12.25vw;
+}
+p.title {
+    font-family:sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.5vw;
+}
+.subtitle {
+    font-family:"greycliff-cf", sans-serif;
+    margin: 3vh 0 0 0;
+    max-width: 30ch;
+    font-weight: 400;
+    font-size: 25px;
+    font-variation-settings: "wght" 400, "opsz" 72, "ital" 0;
+}
+
+.container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+  }

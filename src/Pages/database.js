@@ -4,7 +4,7 @@ export const Leaderboard = [
         score : 171,
     },
     {
-        name: "Sean402",
+        name: "Sean104",
         score: 191
     },
 ]

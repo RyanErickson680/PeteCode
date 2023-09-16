@@ -1,4 +1,5 @@
 import React from 'react';
+import pete from './Purdue-Pete.jpg'
 import {
 Nav,
 NavLink,
@@ -6,6 +7,7 @@ Bars,
 NavMenu,
 NavBtn,
 NavBtnLink,
+Logo,
 } from './navbarElements';
 
 const Navbar = () => {
@@ -15,6 +17,10 @@ return (
 		<Bars />
 
 		<NavMenu>
+		<NavLink to='/'>
+			<Logo src={pete}>
+			</Logo>
+		</NavLink>
 		<NavLink to='/board' activeStyle>
 			Leaderboard
 		</NavLink>

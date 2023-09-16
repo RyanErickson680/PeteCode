@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import LeetCode from 'leetcode-query';
 import './styles.css'
+
 export default function Profiles({ Leaderboard }) {
   const [userData, setUserData] = useState([]);
 
@@ -36,76 +36,86 @@ export default function Profiles({ Leaderboard }) {
 }
 
 async function GetData() {
+    
     // Define the endpoint and headers
-const url = "https://leetcode.com/graphql";
-const headers = {
-  "Content-Type": "application/json",
-  "User-Agent": "Mozilla/5.0 +http://localhost:3000/board"// This is just an example, use your own user agent or any generic one
-};
-
-// Define the query and variables
-const username = "okm30";
-const data = {
-  "query": `
-    query userProblemsSolved($username: String!) {
-        allQuestionsCount {
+    const url = "/graphql";
+    const headers = {
+      "Content-Type": "application/json",
+      "User-Agent": "Mozilla/5.0",
+    };
+  
+    // Define the query and variables
+    const username = "okm30";
+    const data = {
+      query: `
+        query userProblemsSolved($username: String!) {
+          allQuestionsCount {
             difficulty
             count
-        }
-        matchedUser(username: $username) {
+          }
+          matchedUser(username: $username) {
             problemsSolvedBeatsStats {
-                difficulty
-                percentage
+              difficulty
+              percentage
             }
             submitStatsGlobal {
-                acSubmissionNum {
-                    difficulty
-                    count
-                }
+              acSubmissionNum {
+                difficulty
+                count
+              }
             }
+          }
         }
+      `,
+      variables: {
+        username: username,
+      },
+    };
+  
+    try {
+      // Make the POST request
+      const response = await fetch(url, {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(data),
+      });
+  
+      if (response.ok) {
+        const responseData = await response.json();
+  
+        // Extract necessary details
+        const totalSolved = responseData.data.matchedUser.submitStatsGlobal.acSubmissionNum.find(
+          (item) => item.difficulty === "All"
+        ).count;
+        const easySolved = responseData.data.matchedUser.submitStatsGlobal.acSubmissionNum.find(
+          (item) => item.difficulty === "Easy"
+        ).count;
+        const mediumSolved = responseData.data.matchedUser.submitStatsGlobal.acSubmissionNum.find(
+          (item) => item.difficulty === "Medium"
+        ).count;
+        const hardSolved = responseData.data.matchedUser.submitStatsGlobal.acSubmissionNum.find(
+          (item) => item.difficulty === "Hard"
+        ).count;
+  
+        // Format and print output
+        const output = `
+          The User: ${username}
+          solved ${totalSolved} problems. The category count is:
+          Easy: ${easySolved}
+          Medium: ${mediumSolved}
+          Hard: ${hardSolved}
+        `;
+  
+        return (totalSolved);
+      } else {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+    } catch (error) {
+      console.error(error);
     }
-    `,
-  variables: {
-    username: username
   }
-};
-
-// Make the POST request
-fetch(url, {
-    mode: 'no-cors',
-  method: "POST",
-  headers: headers,
-  json: data,
-})
-  .then(response => {
-    if (response.status){
-      return response.json();
-    } //else {
-      //throw new Error(`Error ${response.status}: ${response.statusText}`);
-    //}
-  })
-  .then(responseData => {
-    // Extract necessary details
-    const totalSolved = responseData.data.matchedUser.submitStatsGlobal.acSubmissionNum.find(item => item.difficulty === 'All').count;
-    const easySolved = responseData.data.matchedUser.submitStatsGlobal.acSubmissionNum.find(item => item.difficulty === 'Easy').count;
-    const mediumSolved = responseData.data.matchedUser.submitStatsGlobal.acSubmissionNum.find(item => item.difficulty === 'Medium').count;
-    const hardSolved = responseData.data.matchedUser.submitStatsGlobal.acSubmissionNum.find(item => item.difficulty === 'Hard').count;
-
-    // Format and print output
-    const output = `
-    The User: ${username}
-    solved ${totalSolved} problems. The category count is:
-    Easy: ${easySolved}
-    Medium: ${mediumSolved}
-    Hard: ${hardSolved}
-    `;
-
-    return 1;
-  })
-  .catch(error => {
-    console.error(error);
-  });
-
-  }
+  
+  // Call the function to make the GraphQL request
+  GetData();
+  
   
