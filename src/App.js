@@ -10,6 +10,8 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Reset from "./auth/Reset";
 import Dashboard from "./auth/Dashboard";
+import RandomProblemsList from './Pages/randomProblem';
+import Recommendations from './Pages/recommendations';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/board' element={<Board />} />
           <Route path='/competitions' element={<Competitions />} />
+          <Route path='/randomProblems' element={<RandomProblemsList />} />
+          <Route path='/recommendations' element={<Recommendations/>} />
         </Routes>
       </Router>
     </div>
