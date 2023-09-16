@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React from 'react';
 import Navbar from './Components/Navbar';
 import Home from './Pages/Homepage'
-import Page3 from './Pages/page3';
 import Board from './Pages/board';
 import Competitions from './Pages/competitions';
 import Login from "./auth/Login";
@@ -17,14 +16,13 @@ function App() {
     <div className="app">
       <Router>
         <Routes>
-          <Route exact path="/" element={<Login />} />
+          <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/reset" element={<Reset />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route path='/' element={<Home />} />
           <Route path='/board' element={<Board />} />
           <Route path='/competitions' element={<Competitions />} />
-          <Route path='/page3' element={<Page3 />} />
         </Routes>
       </Router>
     </div>
