@@ -37,7 +37,7 @@ function RandomProblemsList(difficulty, category, numQuestions) {
       const data = response.data.stat_status_pairs;
       const categoryProblems = filterByCategory(data, category);
       const difficultyProblems = filterByDifficulty(categoryProblems, difficulty);
-      randomProblems = getRandomProblems(categoryProblems, numQuestions); 
+      randomProblems = getRandomProblems(difficultyProblems, numQuestions); 
       setProblems(randomProblems);
     } catch (error) {
       console.error('Error fetching problems:', error);
