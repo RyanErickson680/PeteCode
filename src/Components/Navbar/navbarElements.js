@@ -32,6 +32,11 @@ cursor: pointer;
 	color: #808080;
 	font-weight: bold;
 }
+&:hover {
+    font-weight: bold;
+	mix-blend-mode: multiply;
+    transform: scale(1.1); /* Scale up the link on hover */
+  }
 `;
 
 export const Bars = styled(FaBars)`
