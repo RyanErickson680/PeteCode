@@ -8,7 +8,7 @@ import { problemComplete } from '../../auth/firebase';
 
 
 let potd_link = "https://leetcode.com/problems/shortest-path-visiting-all-nodes/?envType=daily-question&envId=2023-09-17"
-let problemOfTheDay = 'Longest Continuous Increasing Subsequence'
+let problemOfTheDay = 'Shortest Path Visiting All Nodes'
 function BtnComponent(props) {
   return (
     <div>
@@ -46,7 +46,7 @@ function BtnComponent(props) {
 }
 
   async function GetData(currname,problemOfTheDay) {
-    
+    console.log(currname);
     // Define the endpoint and headers
     const url = "/graphql";
     const headers = {

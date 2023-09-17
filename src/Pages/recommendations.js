@@ -20,11 +20,14 @@ export default function Recommendations() {
 
     const [randomLink, setRandomLink] = useState('');
 
+    const url = 'https://leetcode.com/problems/';
+
+
     const handleSubmission = () => {
         if (difficulty && topic) {
-            const newRecommendation = { difficulty, topic, randomLink };
+                        const newRecommendation = { difficulty, topic, randomLink };
             setRecommendations([...recommendations, newRecommendation]);
-            fetchRandomLink();
+        fetchRandomLink();
         }
     };
     const [solved, setSolved] = useState([]);
@@ -139,7 +142,7 @@ export default function Recommendations() {
                 {recommendations.map((rec, index) => (
                     <div key={index} className="recommendation">
                         <p>Difficulty: {rec.difficulty}</p>
-                        <a href={rec.randomLink}>{rec.randomLink}: </a>
+                        <a href={url + rec.randomLink}>{rec.randomLink}: </a>
                         <p>Topic: {rec.topic}</p>
                     </div>
                 ))}

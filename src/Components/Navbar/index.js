@@ -47,6 +47,7 @@ const Navbar = () => {
 	}, []);
 
 
+<<<<<<< HEAD
 	return (
 		<>
 			<Nav>
@@ -74,6 +75,34 @@ const Navbar = () => {
 			</Nav>
 		</>
 	);
+=======
+		<NavMenu>
+		<NavLink to='/'>
+			<Logo src={pete}>
+			</Logo>
+		</NavLink>
+		<NavLink to='/board' activeStyle className={'HoverLink'}>
+			Leaderboard
+		</NavLink>
+		<NavLink to='/competitions' activeStyle className={'HoverLink'}>
+			Competitions
+		</NavLink>
+		<NavLink to='/POTDboard' activeStyle className={'HoverLink'}>
+			POTDboard
+		</NavLink>
+		<NavLink to='/recommendations' activeStyle className={'HoverLink'}>
+			Recommendations
+		</NavLink>
+		{/* Second Nav */}
+		{/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
+		</NavMenu>
+		<NavBtn>
+		<NavBtnLink to='/login'>{status}</NavBtnLink>
+		</NavBtn>
+	</Nav>
+	</>
+);
+>>>>>>> 93989c8bbaa1ebf8993e19ff5171eec8763187ef
 };
 
 export default Navbar;
