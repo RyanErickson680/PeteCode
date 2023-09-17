@@ -37,7 +37,7 @@ font-size: 18px;
   position: relative;
   border: none;
   background: none;
-  text-transform: uppercase;
+ 
   transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
   transition-duration: 400ms;
   transition-property: color;
