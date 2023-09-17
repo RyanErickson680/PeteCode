@@ -12,7 +12,7 @@ body {
   
   .recommendations-container {
     width: 95%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,13 +91,31 @@ body {
   }
   
   .topic-dropdown {
-    display: flex;
-    flex-direction: column;
+    display: inline-block;
     font-size: 20px;
     list-style-type: none;
+    width:100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
   }
+
   .topic-dropdown select{
     height: 20%;
+    width:40%;
+    margin: 5% 0 5% 0;
+  }
+
+  #button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    height:15%;
+    font-size: 17px;
+    width:15%;
   }
 
   .radio-buttons{
@@ -157,17 +175,12 @@ body {
   
   select {
     width: 100%;
+    font: inherit;
     padding: 5px;
     margin-bottom: 10px;
   }
   
-  button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
+  
   
   button:hover {
     background-color: #0056b3;
@@ -197,11 +210,11 @@ body {
     .select-difficulty,
     .select-topic {
       padding: 10px;
-      
     }
   
     .section-header {
       font-size: 16px;
+      
     }
   
     input[type="radio"] {

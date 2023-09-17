@@ -9,7 +9,7 @@ p.dash {
   margin-bottom: 5%;
 }
 .dashboard {
-    height: 100vh;
+    height: 90vh;
     width: 100vw;
     display: flex;
     align-items: center;
