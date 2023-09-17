@@ -11,6 +11,7 @@ import Register from "./auth/Register";
 import Reset from "./auth/Reset";
 import Dashboard from "./auth/Dashboard";
 import Recommendations from './Pages/recommendations';
+import POTDBoard from './Pages/POTDboard';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path='/board' element={<Board />} />
           <Route path='/competitions' element={<Competitions />} />
           <Route path='/recommendations' element={<Recommendations/>} />
+          <Route path='/POTDboard' element={<POTDBoard/>} />
         </Routes>
       </Router>
     </div>
