@@ -26,7 +26,7 @@ function Dashboard() {
   }, [user, loading]);
   return (
     <div className="dashboard">
-       <p className="dashboard__container" style={{backgroundColor: 'white', padding: '30px', height:'55%', width: '25%'}}>
+       <p className="dashboard__container" style={{backgroundColor: 'white', padding: '30px', height:'55%', width: 'fit-content'}}>
         Logged in as
          <p class="dash">{name}</p>
         Email
