@@ -3,7 +3,7 @@ import { Board } from "../board.js"
 import getFinalTime from "./competitions.js";
 import { stop, Competitions } from "./competitions.js";
 import { getUserUsername } from '../../auth/firebase';
-import { addTime } from '../../auth/firebase';
+
 
 
 let potd_link = "https://leetcode.com/problems/shortest-path-visiting-all-nodes/?envType=daily-question&envId=2023-09-17"
@@ -25,7 +25,12 @@ function BtnComponent(props) {
               props.stop();
               const currname = await getUserUsername();
               const result = await GetData(currname,problemOfTheDay);
-              console.log(result);
+              if (result.includes(problemOfTheDay)){
+                console.log(result);
+              }
+              else{
+                props.start();
+              }
             }}
           >
             Stop
@@ -37,35 +42,8 @@ function BtnComponent(props) {
     </div>
   ); 
 }
-<<<<<<< HEAD
 
   async function GetData(currname,problemOfTheDay) {
-=======
-const checkSolved = async (problemOfTheDay) => {
-  try {
-    const temp_username = await getUserUsername();
-    const response = await GetData(temp_username);
-    if (response) {
-      const recentSubmissionList = response.recentSubmissionList;
-      const titles = recentSubmissionList.title;
-      console.log(titles);
-      if (titles.includes(problemOfTheDay)) {
-        const finalTime = getFinalTime()
-        console.log(finalTime)
-        await addTime(finalTime)
-        return "Solved";
-      } else {
-        return "Not Solved";
-      }
-    } else {
-      return "Data not available"; // Handle the case where data is not available
-    }
-  } catch (error) {
-    console.error(error);
-    return "Error"; // Handle the error gracefully
-  }}
-  async function GetData(currname) {
->>>>>>> ad4fb8986c86a2328a503bd30e647735edbc3424
     
     // Define the endpoint and headers
     const url = "/graphql";
