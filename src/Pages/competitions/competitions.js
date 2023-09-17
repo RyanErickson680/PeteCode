@@ -41,6 +41,7 @@ function Competitions() {
   const stop = () => {
     clearInterval(interv);
     setStatus(2);
+    console.log("0" + updatedH + "0" + updatedM + "0" + updatedS + "0" + updatedMs)
   };
 
   const reset = () => {
