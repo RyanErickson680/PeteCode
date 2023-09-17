@@ -128,7 +128,7 @@ async function GetData(currname) {
         ).count;
         const recentSubmissionList = responseData.data.recentSubmissionList;
         const name_solved = recentSubmissionList.map(item => item.title);
-
+        console.log(name_solved);
         // Format and print output
         return (totalSolved);
       } else {
@@ -159,26 +159,6 @@ async function GetData(currname) {
     }
   }
   
-  const checkSolved = async (problemOfTheDay) => {
-    try {
-      const response = await GetData(getUserUsername());
-      if (response && response.recentSubmissionList) {
-        const recentSubmissionList = response.recentSubmissionList;
-        const titles = recentSubmissionList.title;
-        if (titles.includes(problemOfTheDay)) {
-          const finalTime = getFinalTime()
-          console.log(finalTime)
-          return "Solved";
-        } else {
-          return "Not Solved";
-        }
-      } else {
-        return "Data not available"; // Handle the case where data is not available
-      }
-    } catch (error) {
-      console.error(error);
-      return "Error"; // Handle the error gracefully
-    }}
-  // Call the function to make the GraphQL request
+
 
   
