@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import pete from './Purdue-Pete.jpg'
 import {
 Nav,
@@ -9,8 +9,28 @@ NavBtn,
 NavBtnLink,
 Logo,
 } from './navbarElements';
+import { getUserUsername } from '../../auth/firebase';
+import { isSignedIn } from '../../auth/firebase';
 
 const Navbar = () => {
+
+  const [status, setStatus] = useState('Sign In');
+
+  useEffect(() => {
+
+	const getSignedIn = async () => {
+		await getUserUsername()
+		var testBool = isSignedIn();
+		if (testBool) {
+		setStatus('Account');
+		} else {
+		setStatus('Sign In');
+		}
+			
+	};
+	getSignedIn();	
+  },[]);
+
 return (
 	<>
 	<Nav>
@@ -34,7 +54,7 @@ return (
 		{/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
 		</NavMenu>
 		<NavBtn>
-		<NavBtnLink to='/login'>Sign In</NavBtnLink>
+		<NavBtnLink to='/login'>{status}</NavBtnLink>
 		</NavBtn>
 	</Nav>
 	</>
