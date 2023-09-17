@@ -41,6 +41,9 @@ function Competitions() {
   const stop = () => {
     clearInterval(interv);
     setStatus(2);
+    return (
+      "0" + updatedH + ":0" + updatedM + ":0" + updatedS + ":0" + updatedMs
+  );
   };
 
   const reset = () => {
@@ -49,14 +52,14 @@ function Competitions() {
     setTime({ms:0, s:0, m:0, h:0})
   };
 
-  const getFinalTime = () => {
+  async function getFinalTime () {
     return (
-        "0" + updatedH + "0" + updatedM + "0" + updatedS + "0" + updatedMs
+        "0" + updatedH + ":0" + updatedM + ":0" + updatedS + ":0" + updatedMs
     );
   }
-  
-  const resume = () => start();
 
+  const resume = () => start();
+  
   return (
     <body class="competition">
     <div className="main-section">

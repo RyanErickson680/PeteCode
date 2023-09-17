@@ -6,7 +6,7 @@ import { getUserUsername } from '../../auth/firebase';
 
 
 let potd_link = "https://leetcode.com/problems/shortest-path-visiting-all-nodes/?envType=daily-question&envId=2023-09-17"
-let problemOfTheDay = "Shortest Path Visiting All Nodes"
+let problemOfTheDay = 'Longest Continuous Increasing Subsequence'
 function BtnComponent(props) {
   return (
     <div>
@@ -35,28 +35,28 @@ function BtnComponent(props) {
     </div>
   );
 }
-const checkSolved = async (problemOfTheDay) => {
+async function checkSolved(problemOfTheDay) {
   try {
     const temp_username = await getUserUsername();
     const response = await GetData(temp_username);
-    if (response) {
-      const recentSubmissionList = response.recentSubmissionList;
-      const titles = recentSubmissionList.title;
-      console.log(titles);
-      if (titles.includes(problemOfTheDay)) {
-        const finalTime = getFinalTime()
-        console.log(finalTime)
+    console.log(response);
+    console.log(temp_username);
+  
+      if (response.includes(problemOfTheDay)) {
         return "Solved";
+
       } else {
         return "Not Solved";
       }
-    } else {
-      return "Data not available"; // Handle the case where data is not available
-    }
+    // } else {
+    //   return "Data not available"; // Handle the case where data is not available
+    // }
   } catch (error) {
     console.error(error);
     return "Error"; // Handle the error gracefully
-  }}
+  }
+}
+
   async function GetData(currname) {
     
     // Define the endpoint and headers
