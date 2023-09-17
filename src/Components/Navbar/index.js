@@ -44,11 +44,11 @@ return (
 		<NavLink to='/board' activeStyle className={'HoverLink'}>
 			Leaderboard
 		</NavLink>
-		<NavLink to='/POTDboard' activeStyle className={'HoverLink'}>
-			POTDboard
-		</NavLink>
 		<NavLink to='/competitions' activeStyle className={'HoverLink'}>
 			Competitions
+		</NavLink>
+		<NavLink to='/POTDboard' activeStyle className={'HoverLink'}>
+			POTDboard
 		</NavLink>
 		<NavLink to='/recommendations' activeStyle className={'HoverLink'}>
 			Recommendations
