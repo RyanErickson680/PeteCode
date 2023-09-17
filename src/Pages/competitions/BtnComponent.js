@@ -18,6 +18,17 @@ function BtnComponent(props) {
         </div>
       ) : null}
     </div>
+    );
+}
+
+function checkSolved(randomLink, recentSubmissionList) {
+  if (recentSubmissionList.includes(randomLink)) {
+      const finalTime = this.getFinalTime()
+  } else {
+    const finalTime = ""
+  }
+  return (
+    <h1>finalTime</h1>
   );
 }
 
