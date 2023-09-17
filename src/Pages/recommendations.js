@@ -128,7 +128,7 @@ export default function Recommendations() {
                 {recommendations.map((rec, index) => (
                     <div key={index} className="recommendation">
                         <p>Difficulty: {rec.difficulty}</p>
-                        <p>Link: {rec.randomLink}</p>
+                        <a href={rec.randomLink}>{rec.randomLink}: </a>
                         <p>Topic: {rec.topic}</p>
                     </div>
                 ))}
