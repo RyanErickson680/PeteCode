@@ -4,6 +4,7 @@ import { Leaderboard } from './database';
 import getFinalTime from "./competitions/competitions";
 import { getUserUsername } from '../auth/firebase';
 import {getAllUserUsername} from '../auth/firebase'
+import './leaderboard.css';
 
 export default function Board() {
     const [userData, setUserData] = useState([]);
@@ -32,6 +33,14 @@ export default function Board() {
 
         <div className="duration">
             All-Time
+        </div>
+        <div class='label'>
+          <div>
+            Username
+          </div>
+          <div>
+            Problems solved
+          </div>
         </div>
 
         <Profiles Ordered={between(userData)}></Profiles>
