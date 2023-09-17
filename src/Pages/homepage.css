@@ -7,20 +7,38 @@
 
 body {
     background-image: url('../img/7.jpg');
-    background-size: 100%;
+    background-size: cover;
     background-attachment: fixed;
 }
 
+.bottom {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 3px;
+    font-size: 50%;
+    color:gray;
+}
+.bottomLink {
+    color:gray;
+}
+
+.gradient {
+    background: linear-gradient(to right, #d5ca92 0%, #4e4207 100%);
+    -webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
 
 .title {
     align-items: center;
-    color:black;
 
     font-family: "Lo-Res", sans-serif;
     font-weight: 200;
     font-style: normal;
     letter-spacing: -1.75vw;
     font-size: 12.25vw;
+    
+    
 }
 p.title {
     font-family:sans-serif;
@@ -34,6 +52,7 @@ p.title {
     font-weight: 400;
     font-size: 25px;
     font-variation-settings: "wght" 400, "opsz" 72, "ital" 0;
+    color:gray;
 }
 
 .container {

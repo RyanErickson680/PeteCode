@@ -21,13 +21,13 @@ return (
 			<Logo src={pete}>
 			</Logo>
 		</NavLink>
-		<NavLink to='/board' activeStyle>
+		<NavLink to='/board' activeStyle className={'HoverLink'}>
 			Leaderboard
 		</NavLink>
-		<NavLink to='/competitions' activeStyle>
+		<NavLink to='/competitions' activeStyle className={'HoverLink'}>
 			Competitions
 		</NavLink>
-		<NavLink to='/recommendations' activeStyle>
+		<NavLink to='/recommendations' activeStyle className={'HoverLink'}>
 			Recommendations
 		</NavLink>
 		{/* Second Nav */}

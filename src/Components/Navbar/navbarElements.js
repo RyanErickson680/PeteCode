@@ -20,6 +20,7 @@ export const Logo = styled.img`
 
 `;
 
+
 export const NavLink = styled(Link)`
 color: #c28e0e;
 display: flex;
@@ -32,7 +33,16 @@ cursor: pointer;
 	color: #808080;
 	font-weight: bold;
 }
+&.HoverLink {
+	&:hover {
+		font-weight: bold;
+		mix-blend-mode: multiply;
+    	transform: scale(1.1);
+	}
+}
 `;
+
+
 
 export const Bars = styled(FaBars)`
 display: none;
@@ -66,6 +76,7 @@ export const NavBtn = styled.nav`
 display: flex;
 align-items: center;
 margin-right: 24px;
+
 /* Third Nav */
 /* justify-content: flex-end;
 width: 100vw; */
@@ -75,8 +86,8 @@ width: 100vw; */
 `;
 
 export const NavBtnLink = styled(Link)`
-border-radius: 4px;
-background: #808080;
+border-radius: 10px;
+background: #fbcf6e;
 padding: 10px 22px;
 color: #000000;
 outline: none;
