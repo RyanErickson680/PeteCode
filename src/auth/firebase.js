@@ -31,7 +31,8 @@ import {
     getDoc,
     doc,
     setDoc,
-    QuerySnapshot
+    QuerySnapshot,
+    updateDoc
 } from "firebase/firestore";
 
 
@@ -79,6 +80,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
                 name,
                 authProvider: "local",
                 email,
+                
             });
             console.log(docRef.name)
         }
@@ -94,7 +96,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
 
 const addTime = async(time) => {
     try {
-        await setDoc(doc(db, 'users', localStorage.getItem('uid')), {
+        await updateDoc(doc(db, 'users', localStorage.getItem('uid')), {
             time: time
         });
     }
@@ -149,6 +151,15 @@ const getAllUserUsername = async () => {
     return usernameArray
 }
 
+const getAllTimes = async () => {
+    const timeArray = []
+    const querySnapshot = await getDocs(collection(db, 'users'));
+    querySnapshot.forEach((doc) => {
+        timeArray.push(doc.data().time)
+    })
+    return timeArray
+}
+
 
 export {
     auth,
@@ -162,7 +173,8 @@ export {
     getAllUserUsername,
     isSignedIn,
     signedIn,
-    addTime
+    addTime,
+    getAllTimes
 };
 
 export const firestore = firebase.firestore();

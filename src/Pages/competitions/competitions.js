@@ -3,6 +3,7 @@ import DisplayComponent from './DisplayComponent';
 import BtnComponent from './BtnComponent';
 import './competitions.css';
 import HackTimer from "./HackTimer";
+import { addTime } from '../../auth/firebase';
 
 
 function Competitions() {
@@ -39,9 +40,20 @@ function Competitions() {
   };
 
   const stop = () => {
+    if(updatedH == 0 && updatedM == 0){
+      addTime(updatedS + " seconds ")
+    }
+    else if(updatedH == 0){
+      addTime(updatedM + " minutes " + updatedS + " seconds ")
+    }
+    else{
+      addTime(updatedH + " hours " + updatedM + " minutes " + updatedS + " seconds ")
+    }
+    
+
     clearInterval(interv);
     setStatus(2);
-    console.log("0" + updatedH + "0" + updatedM + "0" + updatedS + "0" + updatedMs)
+    
   };
 
   const reset = () => {
