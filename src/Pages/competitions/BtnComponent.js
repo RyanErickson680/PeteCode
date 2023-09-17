@@ -47,7 +47,7 @@ const checkSolved = async (problemOfTheDay) => {
       if (titles.includes(problemOfTheDay)) {
         const finalTime = getFinalTime()
         console.log(finalTime)
-        await addTime(finalTime)
+        await addTime(finalTime)  
         return "Solved";
       } else {
         return "Not Solved";

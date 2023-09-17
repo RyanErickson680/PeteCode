@@ -42,7 +42,7 @@ export default function Board() {
             Problems solved
           </div>
         </div>
-
+        
         <Profiles Ordered={between(userData)}></Profiles>
 
     </div>
