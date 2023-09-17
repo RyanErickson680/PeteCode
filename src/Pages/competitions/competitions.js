@@ -5,7 +5,6 @@ import './competitions.css';
 import HackTimer from "./HackTimer";
 
 
-
 function Competitions() {
   const [time, setTime] = useState({ms:0, s:0, m:0, h:0});
   const [interv, setInterv] = useState();
@@ -50,6 +49,11 @@ function Competitions() {
     setTime({ms:0, s:0, m:0, h:0})
   };
 
+  function getFinalTime() {
+    return (
+        "0" + updatedH + "0" + updatedM + "0" + updatedS + "0" + updatedMs
+    );
+  }
   const resume = () => start();
 
   return (
