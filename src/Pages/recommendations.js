@@ -5,6 +5,8 @@ import './recommendations.css';
 import axios from 'axios';
 import { getUserUsername } from '../auth/firebase';
 import {getAllUserUsername} from '../auth/firebase';
+import RandomProblemsList from './randomProblem';
+
 
 
 
@@ -16,11 +18,13 @@ export default function Recommendations() {
     const [name, setName] = useState('');
     const [currentUser, setCurrentUser] = useState();
 
+    const [randomLink, setRandomLink] = useState('');
 
     const handleSubmission = () => {
         if (difficulty && topic) {
-            const newRecommendation = { difficulty, topic };
+            const newRecommendation = { difficulty, topic, randomLink };
             setRecommendations([...recommendations, newRecommendation]);
+            fetchRandomLink();
         }
     };
     const [solved, setSolved] = useState([]);
@@ -38,6 +42,27 @@ export default function Recommendations() {
 
     // Fetch data for user based on who is signed in
 
+
+      async function fetchRandomLink() {
+        var difNum;
+        switch(difficulty) {
+            case 'easy':
+                difNum = 1;
+                break;
+            case 'medium':
+                difNum = 2;
+                break;
+            case 'hard':
+                difNum = 3;
+                break;
+            default:
+                difNum = 1;
+        }
+        var links = await RandomProblemsList(difNum, topic, 1);
+        if (links) {
+          setRandomLink(links);
+        }
+      }
 
 
     return (
@@ -103,6 +128,7 @@ export default function Recommendations() {
                 {recommendations.map((rec, index) => (
                     <div key={index} className="recommendation">
                         <p>Difficulty: {rec.difficulty}</p>
+                        <p>Link: {rec.randomLink}</p>
                         <p>Topic: {rec.topic}</p>
                     </div>
                 ))}
