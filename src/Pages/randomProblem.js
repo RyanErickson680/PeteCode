@@ -37,7 +37,8 @@ async function RandomProblemsList(difficulty, category, numQuestions) {
     const randomProblems = getRandomProblems(difficultyProblems, numQuestions);
     //console.log(randomProblems[0].stat.question__title_slug);
     
-    return url + randomProblems[0].stat.question__title_slug;
+    //return url + randomProblems[0].stat.question__title_slug;
+    return randomProblems[0].stat.question__title_slug;
   } catch (error) {
     console.error('Error fetching problems:', error);
     throw error; // Propagate the error
