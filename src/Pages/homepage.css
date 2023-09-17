@@ -7,7 +7,7 @@
 
 body {
     background-image: url('../img/7.jpg');
-    background-size: 100%;
+    background-size: cover;
     background-attachment: fixed;
 }
 
@@ -17,6 +17,10 @@ body {
     right: 0;
     padding: 3px;
     font-size: 50%;
+    color:gray;
+}
+.bottomLink {
+    color:gray;
 }
 
 .title {
