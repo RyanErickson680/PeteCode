@@ -4,7 +4,7 @@ import React from 'react';
 const Home = () => {
     return (
         <div>
-            <div class='container'>
+            <div class='container gradient'>
                 <h1 class="title">P</h1>
                 <p class="title">ete</p>
                 <h1 class="title">C</h1>

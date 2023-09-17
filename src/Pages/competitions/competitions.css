@@ -7,6 +7,8 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
+    border-radius: 10px;
+
   }
   
   .main-section {
@@ -15,6 +17,7 @@
     width: 90%;
     height: 500px;
     margin: 30px auto;
+    
   }
   
   .clock-holder {
