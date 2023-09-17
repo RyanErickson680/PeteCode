@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Profiles from './profiles';
 import { Leaderboard } from './database';
+import getFinalTime from "./competitions/competitions";
+import { getUserUsername } from '../auth/firebase';
 
 export default function Board() {
     const [userData, setUserData] = useState([]);
@@ -121,8 +123,47 @@ async function GetData(currname) {
     } catch (error) {
       console.error(error);
     }
+
+    try {
+      // Make the POST request
+      const response = await fetch(url, {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(data),
+      });
+  
+      if (response.ok) {
+        const responseData = await response.json();
+  
+        // Return the entire response object
+        return responseData;
+      } else {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
   
+  const checkSolved = async (problemOfTheDay) => {
+    try {
+      const response = await GetData(getUserUsername());
+      if (response && response.recentSubmissionList) {
+        const recentSubmissionList = response.recentSubmissionList;
+        if (recentSubmissionList.includes(problemOfTheDay)) {
+          const finalTime = getFinalTime()
+          console.log(finalTime)
+          return "Solved";
+        } else {
+          return "Not Solved";
+        }
+      } else {
+        return "Data not available"; // Handle the case where data is not available
+      }
+    } catch (error) {
+      console.error(error);
+      return "Error"; // Handle the error gracefully
+    }}
   // Call the function to make the GraphQL request
   GetData();
   
