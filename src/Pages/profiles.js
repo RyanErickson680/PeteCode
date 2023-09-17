@@ -7,14 +7,14 @@ export default function Profiles({ Ordered }) {
     <div id="profile">
       {Ordered.map((user, index) => (
         <><div className="flex" key={index}>
-          {index === 1 && (
+          {index === 0 && (
             <div className="item">
               
               <h3 className="text-dark">{user.name}</h3>
               <img src={crown} class="crown"></img>
             </div>
           )}
-          {index != 1 && (
+          {index != 0 && (
             <div className="item">
             <h3 className="text-dark">{user.name}</h3>
           </div>
