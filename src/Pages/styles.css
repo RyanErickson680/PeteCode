@@ -20,6 +20,7 @@
 .board {
     text-align: center;
     color: black;
+    background-color:rgba(237, 218, 139, 0.7);
 }
 
 .board .leaderboard{
@@ -36,7 +37,6 @@
     border: 1px solid var(--color-light);
     padding: .5em 2em;
     border-radius: 50px;
-    background-color: transparent;
     cursor: pointer;
 }
 
@@ -54,6 +54,8 @@
     /* display: flex; */
 
     margin-top: 3em;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 
 #profile .flex{
@@ -61,7 +63,8 @@
     justify-content: space-between;
     gap: 1em;
     text-align: left;
-    margin-bottom: 2em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
 }
 
 #profile .flex .item{
@@ -70,7 +73,6 @@
 }
 
 #profile .flex img{
-    width: 20%;
     border-radius: 50%;
 }
 
@@ -85,4 +87,5 @@
 
 .item1{
     margin-right: 50px;
+    font-size: 30px;
 }

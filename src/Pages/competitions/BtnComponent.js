@@ -5,6 +5,7 @@ import { stop, Competitions } from "./competitions.js";
 import { getUserUsername } from '../../auth/firebase';
 
 
+
 let potd_link = "https://leetcode.com/problems/shortest-path-visiting-all-nodes/?envType=daily-question&envId=2023-09-17"
 let problemOfTheDay = 'Longest Continuous Increasing Subsequence'
 function BtnComponent(props) {
@@ -22,8 +23,14 @@ function BtnComponent(props) {
             className="stopwatch-btn stopwatch-btn-red"
             onClick={async () => {
               props.stop();
-              const result = await checkSolved(problemOfTheDay);
-              console.log(result);
+              const currname = await getUserUsername();
+              const result = await GetData(currname,problemOfTheDay);
+              if (result.includes(problemOfTheDay)){
+                console.log(result);
+              }
+              else{
+                props.start();
+              }
             }}
           >
             Stop
@@ -33,31 +40,10 @@ function BtnComponent(props) {
         ""
       )}
     </div>
-  );
-}
-async function checkSolved(problemOfTheDay) {
-  try {
-    const temp_username = await getUserUsername();
-    const response = await GetData(temp_username);
-    console.log(response);
-    console.log(temp_username);
-  
-      if (response.includes(problemOfTheDay)) {
-        return "Solved";
-
-      } else {
-        return "Not Solved";
-      }
-    // } else {
-    //   return "Data not available"; // Handle the case where data is not available
-    // }
-  } catch (error) {
-    console.error(error);
-    return "Error"; // Handle the error gracefully
-  }
+  ); 
 }
 
-  async function GetData(currname) {
+  async function GetData(currname,problemOfTheDay) {
     
     // Define the endpoint and headers
     const url = "/graphql";
@@ -93,7 +79,7 @@ async function checkSolved(problemOfTheDay) {
         }
       `,
       variables: {
-        username: username,
+        username: currname,
       },
     };
   
@@ -123,29 +109,7 @@ async function checkSolved(problemOfTheDay) {
         ).count;
         const recentSubmissionList = responseData.data.recentSubmissionList;
         const name_solved = recentSubmissionList.map(item => item.title);
-
-        // Format and print output
-        return (name_solved);
-      } else {
-        throw new Error(`Error ${response.status}: ${response.statusText}`);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-
-    try {
-      // Make the POST request
-      const response = await fetch(url, {
-        method: "POST",
-        headers: headers,
-        body: JSON.stringify(data),
-      });
-  
-      if (response.ok) {
-        const responseData = await response.json();
-  
-        // Return the entire response object
-        return responseData;
+        return name_solved;
       } else {
         throw new Error(`Error ${response.status}: ${response.statusText}`);
       }

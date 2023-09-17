@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import './recommendations.css';
 import axios from 'axios';
 import { getUserUsername } from '../auth/firebase';
-import {getAllUserUsername} from '../auth/firebase';
+import { getAllUserUsername } from '../auth/firebase';
 import RandomProblemsList from './randomProblem';
 
 
@@ -43,9 +43,9 @@ export default function Recommendations() {
     // Fetch data for user based on who is signed in
 
 
-      async function fetchRandomLink() {
+    async function fetchRandomLink() {
         var difNum;
-        switch(difficulty) {
+        switch (difficulty) {
             case 'easy':
                 difNum = 1;
                 break;
@@ -60,9 +60,9 @@ export default function Recommendations() {
         }
         var links = await RandomProblemsList(difNum, topic, 1);
         if (links) {
-          setRandomLink(links);
+            setRandomLink(links);
         }
-      }
+    }
 
 
     return (
@@ -70,41 +70,50 @@ export default function Recommendations() {
             <div className="problem-stats">
                 <div className="problem-count">Problems Solved <br></br><span id="solved">{solved[3]}</span></div>
                 <div className="difficulty-count">
-                    <p>Easy: {solved[0]}</p>
-                    <p>Medium: {solved[1]}</p>
-                    <p>Hard: {solved[2]}</p>
+                    <p id="easy">Easy<br></br><span className="solved">{solved[0]}</span>  <span className="outOf"> / {solved[3]}</span></p>
+                    <p id="medium">Medium<br></br><span className="solved">{solved[1]}</span> <span className="outOf"> / {solved[3]}</span></p>
+                    <p id="hard">Hard<br></br><span className="solved">{solved[2]}</span> <span className="outOf"> / {solved[3]}</span></p>
                 </div>
             </div>
             <div className="select-difficulty">
                 <div className="section-header">1. Select the Difficulty</div>
                 <div className="radio-buttons">
-                    <label>
+                    <li>
+
                         <input
                             type="radio"
                             value="easy"
                             checked={difficulty === 'easy'}
                             onChange={(e) => setDifficulty(e.target.value)}
                         />
-                        Easy
-                    </label>
-                    <label>
+                        <label>
+                            Easy
+                        </label>
+                    </li>
+                    <li>
+
                         <input
                             type="radio"
                             value="medium"
                             checked={difficulty === 'medium'}
                             onChange={(e) => setDifficulty(e.target.value)}
                         />
-                        Medium
-                    </label>
-                    <label>
+                        <label>
+                            Medium
+                        </label>
+                    </li>
+                    <li>
+
                         <input
                             type="radio"
                             value="hard"
                             checked={difficulty === 'hard'}
                             onChange={(e) => setDifficulty(e.target.value)}
                         />
-                        Hard
-                    </label>
+                        <label>
+                            Hard
+                        </label>
+                    </li>
                 </div>
             </div>
             <div className="select-topic">
@@ -117,11 +126,13 @@ export default function Recommendations() {
                         <option value="">Select a topic...</option>
                         <option value="Array">Array</option>
                         <option value="String">String</option>
-                        <option value="Hash Table">Hash Table</option>
-                        <option value="Math">Math</option>
-                        <option value="Dynamic Programming">Dynamic Programming</option>
+                        <option value="Hash">Hash Table</option>
+                        <option value="Recursion">Recursion</option>
+                        <option value="Linked">Linked Lists</option>
+                        <option value="Tree">Binary Trees</option>
+
                     </select>
-                    <button onClick={handleSubmission}>Submit</button>
+                    <button id="button" onClick={handleSubmission}>Submit</button>
                 </div>
             </div>
             <div className="recommendation-list">
