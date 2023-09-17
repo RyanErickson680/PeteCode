@@ -3,6 +3,7 @@ import { Board } from "../board.js"
 import getFinalTime from "./competitions.js";
 import { stop, Competitions } from "./competitions.js";
 import { getUserUsername } from '../../auth/firebase';
+import { addTime } from '../../auth/firebase';
 
 
 let potd_link = "https://leetcode.com/problems/shortest-path-visiting-all-nodes/?envType=daily-question&envId=2023-09-17"
@@ -46,6 +47,7 @@ const checkSolved = async (problemOfTheDay) => {
       if (titles.includes(problemOfTheDay)) {
         const finalTime = getFinalTime()
         console.log(finalTime)
+        await addTime(finalTime)
         return "Solved";
       } else {
         return "Not Solved";

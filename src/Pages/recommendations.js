@@ -130,7 +130,7 @@ export default function Recommendations() {
                         <option value="Math">Math</option>
                         <option value="Dynamic Programming">Dynamic Programming</option>
                     </select>
-                    <button onClick={handleSubmission}>Submit</button>
+                    <button id="button" onClick={handleSubmission}>Submit</button>
                 </div>
             </div>
             <div className="recommendation-list">
