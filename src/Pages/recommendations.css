@@ -1,5 +1,8 @@
-/* recommendations.css */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
 
+p {
+  font-family: 'Open Sans', sans-serif;
+}
 body {
     margin: 0;
     padding: 0;
@@ -21,20 +24,29 @@ body {
   
   .problem-stats {
     width: 100%;
-    background-color: #333;
+    height:30%; 
+    background-color: #292A2B;
     color: #fff;
     text-align: left;
     padding: 10px;
-    box-sizing: border-box;
   }
   
   .problem-count {
-    font-size: 24px;
+    font-size: 22px;
+    margin: 1% 0 1% 1%;
+    color: #767C77;
+  }
+  #solved{
+    font-size: 45px;
+    color: white;
+    margin: 1% 0 0 0;
   }
   
   .difficulty-count {
     display: flex;
     justify-content: space-between;
+    align-self: flex-end;
+    margin: 8% 3% 0 3%;
   }
   
   .select-difficulty,

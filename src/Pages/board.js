@@ -52,7 +52,7 @@ async function GetData(currname) {
     const url = "/graphql";
     const headers = {
       "Content-Type": "application/json",
-      "User-Agent": "Mozilla/5.0",
+      "User-Agent": "Mozilla/5.0",    
     };
   
     // Define the query and variables

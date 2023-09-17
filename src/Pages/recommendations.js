@@ -30,8 +30,6 @@ export default function Recommendations() {
 
         const getData = async () => {
             const username = await getUserUsername()
-            const allUsername = await getAllUserUsername()
-            console.log(allUsername)
             const data = await GetData(username);
             setSolved(data);
         };
@@ -45,7 +43,7 @@ export default function Recommendations() {
     return (
         <div className="recommendations-container">
             <div className="problem-stats">
-                <div className="problem-count">Problems Solved: {solved[3]}</div>
+                <div className="problem-count">Problems Solved <br></br><span id="solved">{solved[3]}</span></div>
                 <div className="difficulty-count">
                     <p>Easy: {solved[0]}</p>
                     <p>Medium: {solved[1]}</p>
