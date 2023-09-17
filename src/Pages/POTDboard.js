@@ -11,27 +11,30 @@ export default function POTDBoard() {
   const [usernames, setUsernames] = useState([]);
   const [userData, setUserData] = useState([]);
 
-  async function fecthData() {
-    const usernames = await getAllTimes();
-    setUsernames(usernames)
-    return usernames;
-  }
-
   function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  async function logData() {
-    const result = await fecthData();
-
-    for (let i = 0; i < 3; i++) {
+  async function fecthData() {
+    const usernames = await getAllTimes();
+    for (let i = 0; i < 2; i++) {
       await sleep(i * 1000);
     }
-    console.log(usernames)
-    const userArray = usernames.map((username) => ({
+    setUsernames(usernames)
+    return usernames;
+
+  }
+
+
+
+  async function logData() {
+
+    const array = await fecthData();
+    const userArray = array.map((username) => ({
       name: username.key,
       solved: username.val,
     }));
+
     console.log(userArray)
 
     setUserData(userArray);
