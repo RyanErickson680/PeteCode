@@ -81,6 +81,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
                 name,
                 authProvider: "local",
                 email,
+                complete: false,
                 
             });
             console.log(docRef.name)
@@ -107,6 +108,31 @@ const addTime = async(time) => {
         alert(err.message);
     }
 }
+
+const problemComplete = async () => {
+    try {
+        await updateDoc(doc(db, 'users', localStorage.getItem('uid')), {
+            complete: true
+        });
+    }
+    catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+}
+
+const problemIncomplete = async () => {
+    try {
+        await updateDoc(doc(db, 'users', localStorage.getItem('uid')), {
+            complete: false
+        });
+    }
+    catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+}
+
 
 const sendPasswordReset = async (email) => {
     try {
@@ -140,6 +166,12 @@ const getUserUsername = async () => {
     return docSnap.data().name
 }
 
+const isProblemSolved = async () => {
+    const docRef = doc(db, 'users', localStorage.getItem('uid'))
+    const docSnap = await getDoc(docRef)
+    return docSnap.data().complete
+}
+
 const isSignedIn = () => {
     console.log(signedIn);
     return signedIn;
@@ -155,10 +187,17 @@ const getAllUserUsername = async () => {
 }
 
 const getAllTimes = async () => {
-    const timeArray = []
+    var timeArray = []
+    
     const querySnapshot = await getDocs(collection(db, 'users'));
     querySnapshot.forEach((doc) => {
-        timeArray.push(doc.data().time)
+        var key = doc.data().name;
+        var val = doc.data().time;
+        var doc = {key, val}
+        timeArray.push(doc)
+        //timeArray[index].key = doc.data().name
+        //timeArray[index].value = doc.data().time
+        console.log(timeArray)
     })
     return timeArray
 }
@@ -177,7 +216,10 @@ export {
     isSignedIn,
     signedIn,
     addTime,
-    getAllTimes
+    getAllTimes,
+    problemComplete,
+    isProblemSolved,
+    problemIncomplete
 };
 
 export const firestore = firebase.firestore();

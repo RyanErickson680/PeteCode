@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
 import Navbar from './Components/Navbar';
 import Home from './Pages/homepage'
 import Board from './Pages/board';
@@ -14,10 +14,11 @@ import Recommendations from './Pages/recommendations';
 import POTDBoard from './Pages/POTDboard';
 
 function App() {
+
   return (
     <div className="app">
       <Router>
-      <Navbar />
+        <Navbar />
         <Routes>
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
@@ -26,8 +27,8 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/board' element={<Board />} />
           <Route path='/competitions' element={<Competitions />} />
-          <Route path='/recommendations' element={<Recommendations/>} />
-          <Route path='/POTDboard' element={<POTDBoard/>} />
+          <Route path='/recommendations' element={<Recommendations />} />
+          <Route path='/POTDboard' element={<POTDBoard />} />
         </Routes>
       </Router>
     </div>

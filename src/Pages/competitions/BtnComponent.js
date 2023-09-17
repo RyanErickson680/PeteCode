@@ -3,6 +3,7 @@ import { Board } from "../board.js"
 import getFinalTime from "./competitions.js";
 import { stop, Competitions } from "./competitions.js";
 import { getUserUsername } from '../../auth/firebase';
+import { problemComplete } from '../../auth/firebase';
 
 
 
@@ -27,6 +28,7 @@ function BtnComponent(props) {
               const result = await GetData(currname,problemOfTheDay);
               if (result.includes(problemOfTheDay)){
                 console.log(result);
+                problemComplete();
               }
               else{
                 props.start();
