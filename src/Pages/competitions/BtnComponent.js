@@ -4,6 +4,7 @@ import getFinalTime from "./competitions.js";
 import { stop, Competitions } from "./competitions.js";
 import { getUserUsername } from '../../auth/firebase';
 
+
 let potd_link = "https://leetcode.com/problems/shortest-path-visiting-all-nodes/?envType=daily-question&envId=2023-09-17"
 let problemOfTheDay = "Shortest Path Visiting All Nodes"
 function BtnComponent(props) {
@@ -40,8 +41,9 @@ const checkSolved = async (problemOfTheDay) => {
     const response = await GetData(temp_username);
     if (response) {
       const recentSubmissionList = response.recentSubmissionList;
-      console.log(recentSubmissionList);
-      if (recentSubmissionList.includes(problemOfTheDay)) {
+      const titles = recentSubmissionList.title;
+      console.log(titles);
+      if (titles.includes(problemOfTheDay)) {
         const finalTime = getFinalTime()
         console.log(finalTime)
         return "Solved";
