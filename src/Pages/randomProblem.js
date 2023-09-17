@@ -4,10 +4,9 @@ import axios from 'axios';
  * @param {int} difficulty integer value from 1 to 3
  * @param {String} category
  * @param {int} numQuestions
- * @returns {Promise<Array>}
+ * @returns {String}
  */
 async function RandomProblemsList(difficulty, category, numQuestions) {
-
     const url = 'https://leetcode.com/problems/';
 
   // Function to filter problems by category
@@ -30,11 +29,13 @@ async function RandomProblemsList(difficulty, category, numQuestions) {
 
   try {
     const response = await axios.get('https://leetcode.com/api/problems/algorithms/');
+    //console.log(difficulty);
+    //console.log(category);
     const data = response.data.stat_status_pairs;
     const categoryProblems = filterByCategory(data, category);
     const difficultyProblems = filterByDifficulty(categoryProblems, difficulty);
     const randomProblems = getRandomProblems(difficultyProblems, numQuestions);
-    console.log(randomProblems[0].stat.question__title_slug);
+    //console.log(randomProblems[0].stat.question__title_slug);
     
     return url + randomProblems[0].stat.question__title_slug;
   } catch (error) {
