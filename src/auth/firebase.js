@@ -91,6 +91,19 @@ const registerWithEmailAndPassword = async (name, email, password) => {
         alert("use @purdue.edu email")
     }
 };
+
+const addTime = async(time) => {
+    try {
+        await setDoc(doc(db, 'users', localStorage.getItem('uid')), {
+            time: time
+        });
+    }
+    catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+}
+
 const sendPasswordReset = async (email) => {
     try {
         await sendPasswordResetEmail(auth, email);
@@ -148,7 +161,8 @@ export {
     getUserUsername,
     getAllUserUsername,
     isSignedIn,
-    signedIn
+    signedIn,
+    addTime
 };
 
 export const firestore = firebase.firestore();

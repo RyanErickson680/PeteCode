@@ -26,7 +26,8 @@
   
   .clock-holder {
     width: 100%;
-    background: #edda8b;
+    background-color:rgba(237, 218, 139, 0.7);
+
     margin: 30px auto;
     position: relative;
   }
