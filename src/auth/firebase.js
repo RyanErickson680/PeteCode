@@ -59,6 +59,7 @@ const logInWithEmailAndPassword = async (email, password) => {
     if (email.slice(email.length - 10) == "purdue.edu") {
         try {
             await signInWithEmailAndPassword(auth, email, password)
+            window.location.reload();
         }
         catch (err) {
             console.error(err);
@@ -81,6 +82,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
                 email,
             });
             console.log(docRef.name)
+            window.location.reload();
         }
         catch (err) {
             console.error(err);
@@ -116,6 +118,7 @@ const sendPasswordReset = async (email) => {
 };
 const logout = () => {
     signOut(auth);
+    window.location.reload();
 };
 
 const getUserUsername = async () => {
