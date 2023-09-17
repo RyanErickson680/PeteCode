@@ -126,9 +126,11 @@ export default function Recommendations() {
                         <option value="">Select a topic...</option>
                         <option value="Array">Array</option>
                         <option value="String">String</option>
-                        <option value="Hash Table">Hash Table</option>
-                        <option value="Math">Math</option>
-                        <option value="Dynamic Programming">Dynamic Programming</option>
+                        <option value="Hash">Hash Table</option>
+                        <option value="Recursion">Recursion</option>
+                        <option value="Linked">Linked Lists</option>
+                        <option value="Tree">Binary Trees</option>
+
                     </select>
                     <button id="button" onClick={handleSubmission}>Submit</button>
                 </div>
