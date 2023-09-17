@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "//ayushsinghal05.github.io/PeteCode/static/css/main.babf472d.css",
+    "main.js": "//ayushsinghal05.github.io/PeteCode/static/js/main.239fb92e.js",
+    "static/js/787.26e9d43d.chunk.js": "//ayushsinghal05.github.io/PeteCode/static/js/787.26e9d43d.chunk.js",
+    "static/media/7.jpg": "//ayushsinghal05.github.io/PeteCode/static/media/7.31df1dae822a1ff24a3e.jpg",
+    "static/media/stats.png": "//ayushsinghal05.github.io/PeteCode/static/media/stats.3376f4611c56d080977c.png",
+    "static/media/Purdue-Pete.jpg": "//ayushsinghal05.github.io/PeteCode/static/media/Purdue-Pete.1495a760cf1f3f7b0fa2.jpg",
+    "static/media/pete.jpeg": "//ayushsinghal05.github.io/PeteCode/static/media/pete.1c2154cff4991d7c2877.jpeg",
+    "static/media/LoRes9PlusOTWide-Bold.woff": "//ayushsinghal05.github.io/PeteCode/static/media/LoRes9PlusOTWide-Bold.1369717f107df5ed6259.woff",
+    "static/media/logo.svg": "//ayushsinghal05.github.io/PeteCode/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "//ayushsinghal05.github.io/PeteCode/index.html",
+    "main.babf472d.css.map": "//ayushsinghal05.github.io/PeteCode/static/css/main.babf472d.css.map",
+    "main.239fb92e.js.map": "//ayushsinghal05.github.io/PeteCode/static/js/main.239fb92e.js.map",
+    "787.26e9d43d.chunk.js.map": "//ayushsinghal05.github.io/PeteCode/static/js/787.26e9d43d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.babf472d.css",
+    "static/js/main.239fb92e.js"
+  ]
+}
