@@ -20,6 +20,7 @@ export const Logo = styled.img`
 
 `;
 
+
 export const NavLink = styled(Link)`
 color: #c28e0e;
 display: flex;
@@ -32,12 +33,16 @@ cursor: pointer;
 	color: #808080;
 	font-weight: bold;
 }
-&:hover {
-    font-weight: bold;
-	mix-blend-mode: multiply;
-    transform: scale(1.1); /* Scale up the link on hover */
-  }
+&.HoverLink {
+	&:hover {
+		font-weight: bold;
+		mix-blend-mode: multiply;
+    	transform: scale(1.1);
+	}
+}
 `;
+
+
 
 export const Bars = styled(FaBars)`
 display: none;
