@@ -2,11 +2,20 @@
 
 import React, { useState, useEffect } from 'react';
 import './recommendations.css';
+import axios from 'axios';
+import { getUserUsername } from '../auth/firebase';
+import {getAllUserUsername} from '../auth/firebase';
+
+
 
 export default function Recommendations() {
-    const [difficulty, setDifficulty] = useState('');
-    const [topic, setTopic] = useState('');
-    const [recommendations, setRecommendations] = useState([]);
+    const [difficulty, setDifficulty] = useState(''); // set difficulty of problem
+    const [topic, setTopic] = useState(''); // set topic of problem
+    const [recommendations, setRecommendations] = useState([]); // recommendations based on difficulty and topic
+    const [problems, setProblems] = useState([]); // array of all problems
+    const [name, setName] = useState('');
+    const [currentUser, setCurrentUser] = useState();
+
 
     const handleSubmission = () => {
         if (difficulty && topic) {
@@ -18,12 +27,17 @@ export default function Recommendations() {
 
 
     useEffect(() => {
+
         const getData = async () => {
-            const data = await GetData("okm30");
+            const username = await getUserUsername()
+            const allUsername = await getAllUserUsername()
+            console.log(allUsername)
+            const data = await GetData(username);
             setSolved(data);
         };
         getData();
     }, []);
+
     // Fetch data for user based on who is signed in
 
 
@@ -31,7 +45,7 @@ export default function Recommendations() {
     return (
         <div className="recommendations-container">
             <div className="problem-stats">
-                <div className="problem-count">Problems Solved: 100</div>
+                <div className="problem-count">Problems Solved: {solved[3]}</div>
                 <div className="difficulty-count">
                     <p>Easy: {solved[0]}</p>
                     <p>Medium: {solved[1]}</p>
@@ -170,7 +184,7 @@ async function GetData(name) {
           Hard: ${hardSolved}
         `;
 
-            return ([easySolved, mediumSolved, hardSolved]);
+            return ([easySolved, mediumSolved, hardSolved, totalSolved]);
         } else {
             throw new Error(`Error ${response.status}: ${response.statusText}`);
         }

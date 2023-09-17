@@ -5,10 +5,12 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import "./Login.css";
 import pete from "../img/pete.jpeg"
 import stats from "../img/stats.png"
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading, error] = useAuthState(auth);  
+
   const navigate = useNavigate();
   useEffect(() => {
     if (loading) {

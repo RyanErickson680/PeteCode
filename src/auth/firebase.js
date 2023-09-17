@@ -1,6 +1,13 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+
+
+
+
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -22,7 +29,13 @@ import {
     collection,
     where,
     addDoc,
+    getDoc,
+    doc,
+    setDoc,
+    QuerySnapshot
 } from "firebase/firestore";
+
+
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -37,7 +50,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -45,7 +58,7 @@ const db = getFirestore(app);
 const logInWithEmailAndPassword = async (email, password) => {
     if (email.slice(email.length - 10) == "purdue.edu") {
         try {
-            await signInWithEmailAndPassword(auth, email, password);
+            await signInWithEmailAndPassword(auth, email, password)
         }
         catch (err) {
             console.error(err);
@@ -61,12 +74,13 @@ const registerWithEmailAndPassword = async (name, email, password) => {
         try {
             const res = await createUserWithEmailAndPassword(auth, email, password);
             const user = res.user;
-            await addDoc(collection(db, "users"), {
+            const docRef = await setDoc(doc(db, "users", user.uid), {
                 uid: user.uid,
                 name,
                 authProvider: "local",
                 email,
             });
+            console.log(docRef.name)
         }
         catch (err) {
             console.error(err);
@@ -91,6 +105,31 @@ const logout = () => {
     signOut(auth);
 };
 
+const getUserUsername = async () => {
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            console.log("state = definitely signed in")
+            localStorage.setItem('uid', user.uid)
+        }
+        else {
+            console.log("state = definitely signed out")
+        }
+    })
+    const docRef = doc(db, 'users', localStorage.getItem('uid'))
+    const docSnap = await getDoc(docRef)
+    return docSnap.data().name
+}
+
+const getAllUserUsername = async () => {
+    const usernameArray = []
+    const querySnapshot = await getDocs(collection(db, 'users'));
+    querySnapshot.forEach((doc) => {
+        usernameArray.push(doc.data().name)
+    })
+    return usernameArray
+}
+
+
 export {
     auth,
     db,
@@ -98,4 +137,9 @@ export {
     registerWithEmailAndPassword,
     sendPasswordReset,
     logout,
+    app,
+    getUserUsername,
+    getAllUserUsername
 };
+
+export const firestore = firebase.firestore();
