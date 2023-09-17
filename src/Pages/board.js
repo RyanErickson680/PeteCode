@@ -155,7 +155,8 @@ async function GetData(currname) {
       const response = await GetData(getUserUsername());
       if (response && response.recentSubmissionList) {
         const recentSubmissionList = response.recentSubmissionList;
-        if (recentSubmissionList.includes(problemOfTheDay)) {
+        const titles = recentSubmissionList.title;
+        if (titles.includes(problemOfTheDay)) {
           const finalTime = getFinalTime()
           console.log(finalTime)
           return "Solved";
@@ -170,5 +171,5 @@ async function GetData(currname) {
       return "Error"; // Handle the error gracefully
     }}
   // Call the function to make the GraphQL request
-  GetData();
+
   

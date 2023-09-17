@@ -8,7 +8,6 @@ import 'firebase/compat/firestore';
 
 
 
-
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -54,6 +53,7 @@ const app = firebase.initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const db = getFirestore(app);
+var signedIn = false;
 
 const logInWithEmailAndPassword = async (email, password) => {
     if (email.slice(email.length - 10) == "purdue.edu") {
@@ -109,15 +109,22 @@ const getUserUsername = async () => {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             console.log("state = definitely signed in")
+            signedIn = true;
             localStorage.setItem('uid', user.uid)
         }
         else {
             console.log("state = definitely signed out")
+            signedIn = false;
         }
     })
     const docRef = doc(db, 'users', localStorage.getItem('uid'))
     const docSnap = await getDoc(docRef)
     return docSnap.data().name
+}
+
+const isSignedIn = () => {
+    console.log(signedIn);
+    return signedIn;
 }
 
 const getAllUserUsername = async () => {
@@ -139,7 +146,9 @@ export {
     logout,
     app,
     getUserUsername,
-    getAllUserUsername
+    getAllUserUsername,
+    isSignedIn,
+    signedIn
 };
 
 export const firestore = firebase.firestore();

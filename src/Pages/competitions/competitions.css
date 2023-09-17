@@ -1,6 +1,10 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
   .competitions-body {
     background:#2C3E50;
+  }
+  
+  p {
+    font-family: 'Open Sans', sans-serif;
   }
   
   * {
@@ -22,7 +26,7 @@
   
   .clock-holder {
     width: 100%;
-    background: #fff;
+    background: #edda8b;
     margin: 30px auto;
     position: relative;
   }
@@ -31,12 +35,14 @@
   .stopwatch {
     padding: 60px 0px;
     text-align: center;
+    line-height: 40px; 
+    font-family: sans-serif;
   }
   .stopwatch span{
-    background:#00ABA9;
-    color: #fff;
+    background:#000000;
+    color: #edda8b;
     display: inline-block;
-    font-family: monospace;
+    font-family: sans-serif;
     font-size: 22px;
     padding: 20px;
     border-radius: 5px;
@@ -44,7 +50,7 @@
   }
   
   .stopwatch .stopwatch-btn {
-    background: #fff;
+    background: #000000;
     margin-top: 30px;
     margin-left: 5px;
     border: none;
@@ -56,8 +62,8 @@
     cursor: pointer;
   }
   .stopwatch .stopwatch-btn-red{
-    border: 2px solid #C85454;
-    color: #C85454;
+    border: 2px solid #ffffff;
+    color: #edda8b;
   }
   .stopwatch .stopwatch-btn-yel{
     border: 2px solid #FFC900;
@@ -65,13 +71,13 @@
   }
   
   .stopwatch .stopwatch-btn-gre{
-    border: 2px solid #00ABA9;
-    color: #00ABA9;
+    border: 2px solid #ffffff;
+    color: #edda8b;
   }
   .stopwatch .stopwatch-btn-red:hover {
-    background: #C85454;
-    border: 2px solid #C85454;
-    color: #fff;
+    background: #ff0000;
+    border: 2px solid #ffffff;
+    color: #edda8b;
   }
   .stopwatch .stopwatch-btn-yel:hover {
     background: #FFC900;
