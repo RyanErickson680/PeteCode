@@ -1,24 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import Profiles from './profiles';
 import { Leaderboard } from './database';
+import getFinalTime from "./competitions/competitions";
+import { getUserUsername } from '../auth/firebase';
+import {getAllUserUsername} from '../auth/firebase'
 
 export default function Board() {
     const [userData, setUserData] = useState([]);
   
     useEffect(() => {
       // Fetch data for each user in the leaderboard
-      Promise.all(
-        Leaderboard.map(async (value) => {
-          const data = await GetData(value.name);
-          return {
-            name: value.name,
-            solved: data,
-          };
-        })
-      ).then((userArray) => {
+      async function fetchData() {
+        const usernames = await getAllUserUsername();
+        const userArray = await Promise.all(
+          usernames.map(async (username) => {
+            const data = await GetData(username);
+            return {
+              name: username,
+              solved: data,
+            };
+          })
+        );
         setUserData(userArray);
-      });
-    }, [Leaderboard]);
+      }
+    
+      fetchData();
+    }, []);
   return (
     <div className="board">
         <h1 className='leaderboard'>Leaderboard</h1>
@@ -121,8 +128,47 @@ async function GetData(currname) {
     } catch (error) {
       console.error(error);
     }
+
+    try {
+      // Make the POST request
+      const response = await fetch(url, {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(data),
+      });
+  
+      if (response.ok) {
+        const responseData = await response.json();
+  
+        // Return the entire response object
+        return responseData;
+      } else {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
   
+  const checkSolved = async (problemOfTheDay) => {
+    try {
+      const response = await GetData(getUserUsername());
+      if (response && response.recentSubmissionList) {
+        const recentSubmissionList = response.recentSubmissionList;
+        if (recentSubmissionList.includes(problemOfTheDay)) {
+          const finalTime = getFinalTime()
+          console.log(finalTime)
+          return "Solved";
+        } else {
+          return "Not Solved";
+        }
+      } else {
+        return "Data not available"; // Handle the case where data is not available
+      }
+    } catch (error) {
+      console.error(error);
+      return "Error"; // Handle the error gracefully
+    }}
   // Call the function to make the GraphQL request
   GetData();
   
