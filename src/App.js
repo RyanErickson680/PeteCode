@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react'
 import Navbar from './Components/Navbar';
-import Home from './Pages/homepage'
+import Home from './Pages/Homepage'
 import Board from './Pages/board';
 import Competitions from './Pages/competitions/competitions';
 import Login from "./auth/Login";
