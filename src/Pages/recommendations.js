@@ -156,8 +156,8 @@ async function GetData(name) {
     // Define the endpoint and headers
     const url = "/graphql";
     const headers = {
-        "Content-Type": "application/json",
-        "User-Agent": "Mozilla/5.0",
+        "Content-Type": "application/json"//,
+        //"User-Agent": "Mozilla/5.0",
     };
 
     // Define the query and variables
@@ -192,7 +192,7 @@ async function GetData(name) {
         // Make the POST request
         const response = await fetch(url, {
             method: "POST",
-            //headers: headers,
+            headers: headers,
             body: JSON.stringify(data),
         });
 
