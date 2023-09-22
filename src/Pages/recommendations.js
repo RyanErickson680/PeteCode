@@ -192,7 +192,7 @@ async function GetData(name) {
         // Make the POST request
         const response = await fetch(url, {
             method: "POST",
-            headers: headers,
+            //headers: headers,
             body: JSON.stringify(data),
         });
 
