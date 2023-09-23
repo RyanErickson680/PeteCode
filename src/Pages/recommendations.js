@@ -154,7 +154,7 @@ export default function Recommendations() {
 async function GetData(name) {
 
     // Define the endpoint and headers
-    const url = "https://cors-anywhere.herokuapp.com/https://www.leetcode.com/graphql";
+    const url = "https://www.leetcode.com/graphql";
     const headers = {
         "Content-Type": "application/json"//,
         //"User-Agent": "Mozilla/5.0",
