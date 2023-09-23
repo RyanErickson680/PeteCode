@@ -154,7 +154,7 @@ export default function Recommendations() {
 async function GetData(name) {
 
     // Define the endpoint and headers
-    const url = "/graphql";
+    const url = "https://leetcode.com/graphql";
     const headers = {
         "Content-Type": "application/json"//,
         //"User-Agent": "Mozilla/5.0",
