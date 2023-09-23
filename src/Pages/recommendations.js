@@ -190,11 +190,16 @@ async function GetData(name) {
 
     try {
         // Make the POST request
-        const response = await fetch(url, {
+        const response = await axios.post(url, {
             method: "POST",
             headers: headers,
             body: JSON.stringify(data),
         });
+       // const response = await fetch(url, {
+       //    method: "POST",
+       //     headers: headers,
+       //     body: JSON.stringify(data),
+       // });
 
         if (response.ok) {
             const responseData = await response.json();
